@@ -66,6 +66,7 @@ function start()
    if(temp==null||temp==='undefined')
    {
     createTaskObject('Welcome','Inbox','Access free feature',getTodayDateFormat(new Date()),'Easy');
+    storeTaskLists();
    }
    else
    {
@@ -76,14 +77,15 @@ function start()
    const temp1=Storage.getStoredProject();
    if(temp1===null||temp1==='undefined')
    {
-    projects.push(new Project('My Work 🎯',0));
+     projects.push(new Project('My Work 🎯',0));
+     storeProjects();
    }
    else
    {
     temp1.forEach(element => {
       projects.push(Object.assign(new Project(),element));
     });
-}
+   }
   initialize();
 }
 
