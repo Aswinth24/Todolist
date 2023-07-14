@@ -60,22 +60,37 @@ const storeProjects=()=>{
 }
 function start()
 {
-  taskDetials=[];
-  projects=[];
+   taskDetials=[];
+   projects=[];
    const temp=Storage.getStoredTask();
-   temp.forEach(element => {
-     taskDetials.push(Object.assign(new TaskInfo(),element));
-   });
-
+   if(temp==null||temp==='undefined')
+   {
+    createTaskObject('Welcome','Inbox','Access free feature',getTodayDateFormat(new Date()),'Easy');
+   }
+   else
+   {
+      temp.forEach(element => {
+        taskDetials.push(Object.assign(new TaskInfo(),element));
+      });
+  }
    const temp1=Storage.getStoredProject();
-   temp1.forEach(element => {
-    projects.push(Object.assign(new Project(),element));
-  });
+   if(temp1===null||temp1==='undefined')
+   {
+    projects.push(new Project('My Work 🎯',0));
+   }
+   else
+   {
+    temp1.forEach(element => {
+      projects.push(Object.assign(new Project(),element));
+    });
+}
   initialize();
 }
 
 function initialize()
 {
+  
+  
   
   const menuNavBar=document.querySelector('#menu-bar');
   const addNewTask=document.querySelector('#add-new-task');
