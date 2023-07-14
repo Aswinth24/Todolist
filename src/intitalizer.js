@@ -44,6 +44,8 @@ const calendarContainer=document.querySelector('.calendar-container');
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 const load=()=>{
   createTaskInbox();
+  createProjectTitleList();
+  updateTotalTask();
   inboxList.classList.add('active');
 }
 const addProjectTitle=(title,count)=>{
@@ -87,13 +89,13 @@ function start()
     });
    }
   initialize();
-  console.log(taskDetials);
-  console.log(projects);
+  
 }
 
 function initialize()
 {
-  
+  console.log(taskDetials);
+  console.log(projects);
   
   
   const menuNavBar=document.querySelector('#menu-bar');
@@ -300,7 +302,7 @@ function initialize()
 }
    //-------------------------
    load();
-   createProjectTitleList();
+
    //--------------------
 }
 
