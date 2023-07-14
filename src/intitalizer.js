@@ -43,9 +43,9 @@ const projectSelection=document.querySelector('#project_title_pop_pop_container'
 const calendarContainer=document.querySelector('.calendar-container');
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 const load=()=>{
-  createTaskInbox();
-  createProjectTitleList();
+
   updateTotalTask();
+  createTaskInbox();
   inboxList.classList.add('active');
 }
 const addProjectTitle=(title,count)=>{
@@ -88,12 +88,14 @@ function start()
       projects.push(Object.assign(new Project(),element));
     });
    }
+  load();
   initialize();
   
 }
 
 function initialize()
 {
+ 
   console.log(taskDetials);
   console.log(projects);
   
@@ -301,7 +303,7 @@ function initialize()
   })
 }
    //-------------------------
-   load();
+
 
    //--------------------
 }
@@ -383,7 +385,7 @@ function initialize()
    document.querySelector('.for-Inbox').addEventListener('click',()=>{
     if(newTaskForm.classList.contains('active'))
     {
-      //alert(temp);
+      
       setProjectTaskTitle('Inbox')
      // projectSelection.classList.remove('active'); 
     }
@@ -415,7 +417,7 @@ function initialize()
             const temp=projects[i].getProjectTitle();
             if(newTaskForm.classList.contains('active'))
             {
-              //alert(temp);
+            
               setProjectTaskTitle(temp)
              projectSelection.classList.remove('active'); 
             }
@@ -593,12 +595,14 @@ function initialize()
   const updateTotalTask=()=>
   {
     //Inbox
+  
     document.getElementById('total-inbox-task').textContent=taskDetials.length;
     // Today
     const todayDate=getTodayDateFormat(new Date());
     let count=0;
     for(let i=0;i<taskDetials.length;i++)
     {
+      console.log(taskDetials);
       if(taskDetials[i].getDate()==todayDate)
       {
         count++;
