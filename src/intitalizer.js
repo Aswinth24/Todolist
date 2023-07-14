@@ -87,6 +87,8 @@ function start()
     });
    }
   initialize();
+  console.log(taskDetials);
+  console.log(projects);
 }
 
 function initialize()
