@@ -1,0 +1,327 @@
+@import url('variables.css');
+
+.add-box{  
+    height:0;
+    width:0;
+    border-radius:15px;
+    background-color: var(--dark-main);  
+    flex-direction: column;
+    transition:all 0.3s ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    
+}
+.add-box.active{
+    transform: scale(1);
+    opacity: 1;
+    height:400px;
+    width:550px;
+    visibility: visible;
+}
+.add-content{
+    flex:1;
+    max-width: 550px;
+    width:550px;
+    height:250px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+    padding:20px;
+}
+.new-task-content{
+    border-radius: 5px;
+    background-color: var(--dark-main);
+    box-shadow: 2px 2px 6px var(--dark-hover),-2px -2px 6px  var(--dark-hover);
+    color:var(--dark-text);
+}
+.add-description{
+    height: 180px;
+}
+.priority-pop-pop{
+    position: absolute;
+    width:150px;
+    height: 100px;
+    left:50%;
+    bottom:280px;
+    display: grid;
+    place-items: center;
+    background:var(--dark-main);
+    border-radius: 4px;
+    padding:5px;
+    color:white;
+    overflow-y: auto;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: var(--shadow-border);
+  >span{
+    cursor: pointer;
+  }
+
+}
+.priority-pop-pop.active{
+    visibility: visible;
+    top: 100px;
+    left:50%;
+    display: grid;
+}
+.priority-pop-pop>span{
+    width: 80%;
+    padding:3px;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+}
+.priority-pop-pop>span:hover{
+    background-color: var(--light-main);
+    color:var(--light-text);
+}
+
+.project-box{  
+    color:var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+}
+.add-project-option{
+    box-shadow: 1px 1px 4px  var(--dark-hover),-1px -1px 4px  var(--dark-hover);
+    color:var(--dark-text);
+    padding:5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    width:140px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.add-options{
+    max-width: 550px;
+    width:550px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    place-items: center;
+    flex: 1; 
+}
+.add-date{
+    color:var(--dark-text);
+    width:50%;
+    >input{
+        background-color: var(--dark-body);
+        color:var(--dark-text);
+    }
+}
+.save-cancel{
+    max-width: 550px;
+    width:550px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap:3rem;
+    flex: 1;
+}
+.due-date{
+    cursor: pointer;
+}
+
+/*Project title*/
+
+.project-add-title{
+    width:0;
+    height:0;
+    border-radius: 10px;
+    background-color: var(--dark-main);
+    color:var(--dark-text);
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    transition: all 0.5s ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+    
+}
+.project-add-title.active{
+  visibility: visible;
+    transform: scale(1);
+    opacity: 1;
+    width:400px;
+    height:150px;
+}
+.input-filed{
+     display: flex;
+     flex-direction: column;
+     align-items: start;
+     justify-content: center;
+     padding-left: 20px;
+}
+.input-filed>input{
+    width:90%; 
+    border-radius: 5px;
+    background-color: var(--dark-body);
+    color: var(--dark-text);
+    border:0;
+    outline: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding:10px;
+    position: relative;
+}
+
+.input-filed>span{
+    color:var(--error);
+    font-weight: 500;
+    font-size: 0.8rem;
+
+}
+.project-titile-action-btns{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;  
+}
+.project-title-box:nth-child(1)
+{
+    background-color:var(--color3);
+}
+.project-title-box:nth-child(2)
+{
+    background-color:var( --color2);
+}
+.project-title-box{
+    border:0;
+    cursor: pointer;
+    width:25%;
+    padding:8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    color:var(--dark-text);
+}
+
+/*Project Title PoPop*/
+
+.project_title_pop_pop_container{
+    position: absolute;
+    width:230px;
+    height: fit-content;
+    max-height: 270px;
+    min-height: 140px;
+    padding:15px;
+    top:0;
+    left:50%;
+    z-index: 3;
+    background-color: var(--dark-main);
+    color:var(--dark-text);
+    overflow-y: auto;   
+    border-radius: 4px;   
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: var(--shadow-border);
+}
+.project_title_pop_pop_container.active{
+    visibility: visible;
+    top: 100px;
+}
+.projects_task{
+    display: grid;
+    gap:5px;
+}
+
+.project-task-title-list{
+    display: flex;
+    gap:5px;
+    flex-direction: column;
+}
+.for-Inbox{
+    padding:4px 4px;
+}
+.project-task-container,.for-Inbox{
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap:10px;
+} 
+.project-task-container{
+    padding:3px 4px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    
+}
+.dot{
+    width:8px;
+    height:8px;
+    border-radius: 50%;
+    background-color: var(--color2);
+}
+.projects_task span{
+    font-size: 0.94rem;
+}
+.project-task-container:hover,.for-Inbox:hover{
+    background-color: var(--light-main);
+    color:var(--light-text);
+}
+
+/*-----------------Project Delete---------------*/
+.pop_pop_notification_for_project_discard{
+    width:450px;
+    min-width: 200px;
+    height: 170px;
+    border-radius: 5px;
+    padding:0 10px;
+    overflow: hidden;
+    background-color:var(--dark-main);
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    top: -250px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.5s ease-in-out;
+    color:var(--dark-text);
+    box-shadow: var(--shadow-border);
+}
+.pop_pop_notification_for_project_discard.active{
+    top:50px;
+}
+.pop_pop_notification_for_project_discard>div{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.pop_pop_notification_for_project_discard>div:nth-child(1)
+{
+    padding-left:50px;
+}
+.pop_pop_notification_for_project_discard>div:nth-child(2)
+{ 
+    justify-content: center;
+    white-space:wrap;
+    padding:0 10px;
+}
+.pop_pop_notification_for_project_discard>div:nth-child(3)
+{
+     padding-right:50px;  
+     justify-content:flex-end;
+     gap:20px;
+     >button{
+        font-size: 1rem;
+        border: 0;
+        border-radius: 5px;
+        width:60px;
+        height: 48%;
+        cursor: pointer;
+     }
+}

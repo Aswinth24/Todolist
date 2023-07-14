@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo-List</title>
+    <link rel="icon" href="assets/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="main-menu-toggle">
+            <button type="button" id="menu-bar"class="list-btn">
+                <i class="fa-solid fa-bars icon"></i>
+            </button>
+            <h2>ToDo List</h2>
+        </div>
+        <div class="add-task">
+            <button type="button" id="add-new-task" class="add-task-btn">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </header>
+    <main class="main">
+        <nav class="nav">
+            <div class="default-list">
+                <ul>
+                    <li class="lists" id="inbox">
+                        <button class="btn"><i class="fa-solid fa-inbox inbox"></i>Inbox</button>
+                        <span id="total-inbox-task" class="count-num">1</span>
+                    </li>
+                    <li id="today" class="lists ">
+                        <button type="button" class="btn"><i class="fa-solid fa-calendar-day today"></i>Today</button>
+                        <span id="total-today-task" class="count-num">1</span>
+                    </li>
+                    <li id="week" class="lists ">
+                        <button type="button" class="btn"><i class="fa-solid fa-calendar-week weeks"></i>Weeks</button>
+                        <span id="total-weekly-task" class="count-num">1</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="projects-bar ">
+                <div class="project-heading">
+                    <p>Projects</p>
+                    <button type="button" id="project-add-btn" class="add-btn"><i
+                            class="fa-solid fa-plus plus-icon"></i></button>
+                </div>
+                <div class="list-of-projects">
+                    <ul id="project-list-content" class="projects-content">
+                        <li class="project-title" data-index="0">
+                            <p class="title">My Work Fake🎯</p>
+                            <span id="0">0</span>
+                            <i class="delete_project" class="fa-solid fa-xmark" data-index="0"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="view-content">
+            <header class="list-heading">
+                <div class="header-box">
+                    <h1 id="project-heading">Inbox</h>
+                </div>
+            </header>
+            <div id="list-of-Content" class="main-contents">
+                <div class="task-container" data-index="0" data-project="Inbox">
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="checkbox" id="checkbox-${i}">
+                        <label class="checkmark" for="checkbox-${i}"></label>
+                    </div>
+                    <div class="task-box">
+                        <div class="task-content">
+                            <div class="content-box">
+                                <p id="task-title">
+                                    Welcome Fake
+                                </p>
+                            </div>
+                            <div class="description">
+                                <p id="des-content">
+                                    Access free feature
+                                </p>
+                            </div>        
+                        </div>
+                        <div class="options">
+                            <div class="due-date-text">
+                                <span id="due-date-text"></span>
+                            </div>
+                            <div class="content-priority">
+                               <span>Easy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-option">
+                        <i class="fa-solid fa-pen-to-square option-icon edit-btn" data-index="0"
+                            data-project="Inbox"></i>
+                        <i class="fa-regular fa-trash-can option-icon delete-btn"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="overlay-body"></div>
+    <div id="pop-pop-container" class="pop-pop-container">
+        <!--
+                Add Form
+            -->
+        <form id="new-task-container" class="add-box">
+            <div class="add-content">
+                <textarea id="new-task-title" class="new-task-content" placeholder="Title" maxlength="50"
+                    required="true" name="title"></textarea>
+                <textarea id="new-task-description" class="new-task-content add-description" name="description"
+                    placeholder="Description" maxlength="2000"></textarea>
+            </div>
+            <div class="add-options">
+                <div class="project-box">
+                    <h4>Projects</h4>
+                    <span id="add-project-task-title" class="add-project-option">Inbox</span>
+                </div>
+                <div class="project-box">
+                    <h4>Priority</h4>
+                    <span id="add-new-priority" class="add-project-option">Easy</span>
+                </div>
+                <div class="project-box">
+                    <h4>Due-Date</h4>
+                    <span id="due-date" class="add-project-option"></span>
+                </div>
+            </div>
+            <div class="save-cancel">
+                <button id="cancel-new-task" class="form-action-btn cancel" type="button">Cancel</button>
+                <button id="save-new-task" class="form-action-btn save">Save</button>
+            </div>
+        </form>
+        <!--
+            Edit Form
+        -->
+        <form id="edit-form" class="edit-box">
+            <header class="editor-head">
+                <div class="editor-title">
+                    <h2 id="heading">
+                    </h2>
+                </div>
+                <div class="editor-cancel-option">
+                    <button type="button" class="cancel-btn">
+                        <i id="delete" class="fa-solid fa-xmark x-delete-icon"></i>
+                    </button>
+                </div>
+            </header>
+            <div class="eidtor-content">
+                <div class="editor-task-container">
+                    <div class="editor-task-box">
+                        <textarea id="title-area" placeholder="Title" maxlength="50" required="true"
+                            name="title"></textarea>
+                        <textarea class="editor-description" name="description" id="description-area"
+                            placeholder="Description" maxlength="2000"></textarea>
+                    </div>
+                    <div class="editor-action-box">
+                        <button type="button" id="edit_Task_cancel" class="form-action-btn cancel">
+                            Cancel
+                        </button>
+                        <input type="submit" id="edit_Task_save" class="form-action-btn save" value="Save">
+                    </div>
+                </div>
+                <div class="editor-topic">
+                    <div class="editor-topic-grid">
+                        <div class="editor-project-info">
+                            <h4>Project Title</h4>
+                            <span id="add-project-task-title-1" class="add-project-option">Inbox</span>
+                        </div>
+                        <div class="editor-project-info priority">
+                            <div class="priority-info">
+                                <h4>Priority</h4>
+                            </div>
+                            <span id="add-new-priority-1" class="add-project-option">Easy</span>
+                        </div>
+                        <div class="editor-project-info due-date">
+                            <h4>due-date</h4>
+                            <span id="due-date-1" class="date-text">10-07-2023</span>
+                        </div>
+                    </div>
+                </div>
+           </div>    
+        </form>
+        <div id="project-add-title" class="project-add-title">
+            <div class="input-filed">
+                <input type="text" id="input-project-title" placeholder="Project_Title" maxlength="50">
+                <span id="error-message"></span>
+            </div>
+
+            <div class="project-titile-action-btns">
+                <button type="button" id="cancel-project-title" class="project-title-box">Cancel</button>
+                <button type="button" id="save-project-title" class="project-title-box">Save</button>
+            </div>
+
+        </div>
+    </div>
+    <div id="priority-pop-pop" class="priority-pop-pop">
+
+    </div>
+    <div id="project_title_pop_pop_container" class="project_title_pop_pop_container">
+        <div class="projects_task">
+            <div class="for-Inbox">
+                <i class="fa-solid fa-inbox inbox"></i>
+                <span>Inbox</span>
+            </div>
+            <div id="project-task-title-list">
+                <div class="project-task-container">
+                    <span class="dot"></span>
+                    <span class="project-task-title">My Work🎯</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="calendar-header">
+                <div class="year-picker">
+                    <span id="prev-year-picker" class="year-change">
+                        <pre><<</pre>
+                    </span>
+                    <span id="month-picker" class="month-picker">
+                    </span>
+
+                    <span id="next-year-picker" class="year-change">
+                        <pre>>></pre>
+                    </span>
+                </div>
+            </div>
+            <div class="calendar-body">
+                <div class="calendar-weekdays">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div id="calendar-days" class="calendar-days"></div>
+            </div>
+            <div class="month-body">
+                <div class="year-picker-2">
+                    <span id="prev-year" class="year-change">
+                        <pre><<</pre>
+                    </span>
+                    <span class="year">
+                        2023
+                    </span>
+                    <span id="next-year" class="year-change">
+                        <pre>>></pre>
+                    </span>
+                </div>
+                <div class="month-list">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop_pop_notification_for_project_discard">
+          <div>
+            <span>Delete project?</span>
+          </div>
+          <div>
+               <p>Are you sure you want to delete <strong id="project_title_to_delete"></strong></p>
+          </div>
+          <div>
+            <button id="cancel_project" class="save">Cancel</button>
+            <button id="discard_project" class="cancel">Delete</button>
+          </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright © 2023 Aswinth K</p>
+        <a href="">
+            <i class="fa-brands fa-github" style="color:white"></i>
+        </a>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
