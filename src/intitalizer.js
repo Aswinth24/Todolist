@@ -43,7 +43,7 @@ const projectSelection=document.querySelector('#project_title_pop_pop_container'
 const calendarContainer=document.querySelector('.calendar-container');
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 const load=()=>{
-
+  
   updateTotalTask();
   createTaskInbox();
   inboxList.classList.add('active');
@@ -88,14 +88,15 @@ function start()
       projects.push(Object.assign(new Project(),element));
     });
    }
-  load();
+
   initialize();
   
 }
 
 function initialize()
 {
- 
+  load();
+
   console.log(taskDetials);
   console.log(projects);
   
@@ -219,7 +220,6 @@ function initialize()
           addProjectTitle(projectTitle,0);
           storeProjects();
           createProjectTitleList();
-          storeProjects();
           removeProjectTitleBox();
        }
   })
@@ -304,7 +304,7 @@ function initialize()
 }
    //-------------------------
 
-
+   createProjectTitleList();
    //--------------------
 }
 
@@ -351,15 +351,22 @@ function initialize()
     popConatiner.classList.remove('visible');
     checkMenuBarOpen();
   }
+  const nav=document.querySelector('.nav');
+const headerActive=document.querySelector('.view-content');
    const checkMenuBarOpen=()=>{
-    if(document.querySelector('.nav').classList.contains('active')==false)
+    if(nav.classList.contains('active')==false&&window.innerWidth<='900'){
         overlayContainer.classList.remove('visible');
+    }
+    else
+    {
+      overlayContainer.classList.remove('visible');
+    }
 
    }
   const addAndRemoveMenuNavBar=()=>
    {
-    document.querySelector('.nav').classList.toggle('active');
-    document.querySelector('.view-content').classList.toggle('active');
+    nav.classList.toggle('active');
+    headerActive.classList.toggle('active');
    // console.log(window.innerWidth=='900');
    if(window.innerWidth<='900')
     {
@@ -367,6 +374,15 @@ function initialize()
       document.querySelector('.header').classList.toggle('active');
     }
    }
+   window.addEventListener('resize',()=>{
+   if(window.innerWidth>'900'&&nav.classList.contains('active')&&headerActive.classList.contains('active'))
+      {
+           nav.classList.remove('active');
+           headerActive.classList.remove('active');
+           overlayContainer.classList.remove('visible');
+      }
+   }
+   )
 
 //++++++++++++++++++++ Add New Task Form ++++++++++++++++++++++++++//
   
@@ -595,7 +611,6 @@ function initialize()
   const updateTotalTask=()=>
   {
     //Inbox
-  
     document.getElementById('total-inbox-task').textContent=taskDetials.length;
     // Today
     const todayDate=getTodayDateFormat(new Date());
