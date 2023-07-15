@@ -377,7 +377,7 @@ function initialize()
    window.addEventListener('resize',()=>{
    if(window.innerWidth>'900'&&(nav.classList.contains('active')&&view_conten_active.classList.contains('active')&&headerActive.classList.contains('active')))
       {
-           alert('hello');
+           //alert('hello');
            nav.classList.remove('active');
            headerActive.classList.remove('active');
            overlayContainer.classList.remove('visible');
