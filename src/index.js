@@ -1,2 +1,2 @@
-import start from './intitalizer';
+import start from "./intitalizer";
 start();
