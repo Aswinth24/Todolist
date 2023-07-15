@@ -720,10 +720,11 @@ input{
     .nav.active{
         left:0;
     }
-    .view-content{   
+    .view-content, .view-content.active{   
         left:0;
         width:calc(100% -  50px);
     }
+    
     .pop-pop-container{
         z-index: 4;
     }
