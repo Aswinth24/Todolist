@@ -375,16 +375,21 @@ function initialize()
     }
    }
    window.addEventListener('resize',()=>{
-   if(window.innerWidth>'900'&&(nav.classList.contains('active')&&view_conten_active.classList.contains('active')&&headerActive.classList.contains('active')))
-      {
-           //alert('hello');
+    if(window.innerWidth>'900'&&(nav.classList.contains('active')&&view_conten_active.classList.contains('active')&&headerActive.classList.contains('active')))
+      { 
+        
            nav.classList.remove('active');
            headerActive.classList.remove('active');
            overlayContainer.classList.remove('visible');
-          view_conten_active.classList.remove('active');
+           view_conten_active.classList.remove('active');
       }
-   }
-   )
+      if(window.innerWidth<='900'&&(nav.classList.contains('active')&&view_conten_active.classList.contains('active')&&!headerActive.classList.contains('active')))
+      {
+        
+        nav.classList.remove('active');
+        view_conten_active.classList.remove('active');
+      }
+   })
 
 //++++++++++++++++++++ Add New Task Form ++++++++++++++++++++++++++//
   
