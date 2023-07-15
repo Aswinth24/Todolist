@@ -256,7 +256,6 @@ input{
     align-items: center;
 }
 .project-title>i{
-  
   padding:2px;
   display: flex;
   visibility: hidden;
