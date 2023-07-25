@@ -4,6 +4,10 @@ The project aimed to make a Todolist website using WebPack.**
 - **This Project was designed for**
      - **Desktop view**
        
+|||
+|---|---|
+|**Live link**|**<a href="https://aswinth24.github.io/Todolist/">ToDo list<a>**|
+
 ## 🔧 Functions and Features
 
   - **Create todo with properties title, description, due date and priority**
